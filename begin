@@ -1,0 +1,229 @@
+--source
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+
+--window
+local Window = OrionLib:MakeWindow({Name = "romanian", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", Icon = "rbxassetid://8964489645",IntroText = "cris!", IntroIcon = "rbxassetid://1437013189"})
+
+--[[
+Name = <string> - The name of the UI.
+HidePremium = <bool> - Whether or not the user details shows Premium status or not.
+SaveConfig = <bool> - Toggles the config saving in the UI.
+ConfigFolder = <string> - The name of the folder where the configs are saved.
+IntroEnabled = <bool> - Whether or not to show the intro animation.
+IntroText = <string> - Text to show in the intro animation.
+IntroIcon = <string> - URL to the image you want to use in the intro animation.
+Icon = <string> - URL to the image you want displayed on the window.
+CloseCallback = <function> - Function to execute when the window is closed.
+]]
+
+
+--Notification
+
+OrionLib:MakeNotification({
+	Name = "made by cris",
+	Content = "aaron and toby stink",
+	Image = "rbxassetid://4483345998",
+	Time = 10
+})
+
+--[[
+Title = <string> - The title of the notification.
+Content = <string> - The content of the notification.
+Image = <string> - The icon of the notification.
+Time = <number> - The duration of the notfication.
+]]
+
+
+--FIRST TAB - INFORMATION
+
+
+local Tab = Window:MakeTab({
+	Name = "Information",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+
+Tab:AddLabel("General Information about this hub")
+Tab:AddParagraph("Works for most games")
+
+--Special Access shit
+Tab:AddTextbox({
+	Name = "Special Access",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		if Value == "hey" then
+			local Tab = Window:MakeTab({
+				Name = "Dev Stuff",
+				Icon = "rbxassetid://4483345998",
+				PremiumOnly = false
+			})
+
+			local Section = Tab:AddSection({
+				Name = "Developer stuff"
+			})
+		else
+			print(Value)
+		end
+	end
+})
+
+
+
+
+
+
+
+
+
+
+
+
+--[[
+Name = <string> - The name of the textbox.
+Default = <string> - The default value of the textbox.
+TextDisappear = <bool> - Makes the text disappear in the textbox after losing focus.
+Callback = <function> - The function of the textbox.
+]]
+
+
+
+--Second TAB  - AIMBOT
+
+local Tab = Window:MakeTab({
+	Name = "Aimbot",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+
+
+local Section = Tab:AddSection({
+	Name = "Aimbot"
+})
+
+--[[
+Name = <string> - The name of the section.
+]]
+
+
+
+
+
+
+
+--FINAL TAB - GLOBAL
+
+local Tab = Window:MakeTab({
+	Name = "Global",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+
+
+local Section = Tab:AddSection({
+	Name = "Player Mods"
+})
+
+Tab:AddSlider({
+	Name = "speed",
+	Min = 16,
+	Max = 500,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "speed",
+	Callback = function(PlayerSpeedValue)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = PlayerSpeedValue
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Player Mods 2"
+})
+
+
+Tab:AddSlider({
+	Name = "jump power",
+	Min = 50,
+	Max = 1000,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "power",
+	Callback = function(JumpPowerValue)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = JumpPowerValue
+	end    
+})
+
+--[[
+Name = <string> - The name of the slider.
+Min = <number> - The minimal value of the slider.
+Max = <number> - The maxium value of the slider.
+Increment = <number> - How much the slider will change value when dragging.
+Default = <number> - The default value of the slider.
+ValueName = <string> - The text after the value number.
+Callback = <function> - The function of the slider.
+]]
+
+--TIME CHANGER
+
+local Section = Tab:AddSection({
+	Name = "Time Changer"
+})
+
+--[[
+Name = <string> - The name of the section.
+]]
+
+Tab:AddSlider({
+	Name = "Time Changer",
+	Min = 0,
+	Max = 24,
+	Default = 12,
+	Color = Color3.fromRGB(0, 51, 153),
+	Increment = 0.25,
+	ValueName = "",
+	Callback = function(Value)
+		game.Lighting.TimeOfDay = Value
+	end    
+})
+
+--[[
+Name = <string> - The name of the slider.
+Min = <number> - The minimal value of the slider.
+Max = <number> - The maxium value of the slider.
+Increment = <number> - How much the slider will change value when dragging.
+Default = <number> - The default value of the slider.
+ValueName = <string> - The text after the value number.
+Callback = <function> - The function of the slider.
+]]
+
+
+
+
+--https://github.com/shlexware/Orion/blob/main/Documentation.md
+
+
+
+
+
+
